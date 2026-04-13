@@ -8,19 +8,16 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// Middleware — allow any localhost port in dev (Vite may use 5174+); production uses FRONTEND_URL
+// Middleware — allow localhost in dev and explicit Vercel URL in production
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (process.env.NODE_ENV === "production") {
-        const allowed = process.env.FRONTEND_URL;
-        if (!origin || (allowed && origin === allowed)) return callback(null, true);
-        return callback(new Error("Not allowed by CORS"));
-      }
-      if (!origin) return callback(null, true);
-      const localhost = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin);
-      callback(null, localhost);
-    },
+    origin: [
+      "https://jobmarketfrontend.vercel.app",
+      "http://localhost:5173",
+      "http://localhost:5174",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );

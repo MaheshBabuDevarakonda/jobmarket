@@ -8,7 +8,7 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       "/api": {
-        target: "http://localhost:5000",
+        target: "https://jobmarket-qjqr.onrender.com",
         changeOrigin: true,
       },
     },
