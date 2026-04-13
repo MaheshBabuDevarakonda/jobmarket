@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  @layer base {
+    body {
+      @apply text-slate-800 font-body bg-slate-50;
+      -webkit-font-smoothing: antialiased;
+      background: radial-gradient(circle at top right, #ffffff, #f1f5f9);
+      min-height: 100vh;
+      background-attachment: fixed;
+    }
+  }
+  
+  @layer components {
+    .btn-primary {
+      @apply bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-display font-700 tracking-wider uppercase text-sm px-6 py-3 rounded-xl shadow-[0_8px_16px_-6px_rgba(245,158,11,0.3)] hover:shadow-[0_12px_20px_-6px_rgba(245,158,11,0.5)] transition-all duration-300 active:scale-95;
+    }
+    .btn-secondary {
+      @apply bg-white hover:bg-slate-50 text-slate-800 font-body text-sm px-4 py-2 rounded-xl transition-all duration-300 border border-slate-200 shadow-sm hover:shadow;
+    }
+    .btn-danger {
+      @apply bg-red-50 hover:bg-red-100 text-red-600 font-body text-sm px-4 py-2 rounded-xl transition-all duration-300 border border-red-200 shadow-sm focus:ring-2 focus:ring-red-500/20;
+    }
+    .input-field {
+      @apply w-full bg-white border border-slate-200 rounded-xl text-slate-800 px-4 py-3 text-sm font-body placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:ring-4 focus:ring-amber-500/20 transition-all duration-300 shadow-sm;
+    }
+    .card {
+      @apply bg-white border border-slate-100 p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300;
+    }
+    .label {
+      @apply block text-slate-500 text-xs font-bold uppercase tracking-widest mb-2 pl-1;
+    }
+  }
+
+@layer utilities {
+  .font-700 { font-weight: 700; }
+  .font-800 { font-weight: 800; }
+  .text-amber { color: #f59e0b; }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.35s ease forwards;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.3s ease forwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; opacity: 0; }
+.stagger-2 { animation-delay: 0.1s; opacity: 0; }
+.stagger-3 { animation-delay: 0.15s; opacity: 0; }
+.stagger-4 { animation-delay: 0.2s; opacity: 0; }
