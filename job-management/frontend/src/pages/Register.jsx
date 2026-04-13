@@ -25,7 +25,7 @@ const Register = () => {
       toast.success("Account created! Welcome to JobOps.");
       navigate("/dashboard", { replace: true });
     } catch (err) {
-      toast.error(err.response?.data?.message || "Registration failed.");
+      toast.error(err.response?.data?.message || err.message || "Registration failed.");
     } finally {
       setLoading(false);
     }
